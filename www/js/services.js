@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 //service在使用this指针，而factory直接返回一个对象
-  .service('CommonService', function ($ionicPopup, $ionicPopover, $rootScope, $state, $ionicModal, $cordovaCamera, $cordovaImagePicker, $ionicPlatform, $ionicActionSheet, $ionicHistory, $timeout, $cordovaToast, $cordovaGeolocation, $cordovaBarcodeScanner, $ionicViewSwitcher, $ionicLoading) {
+  .service('CommonService', function ($ionicPopup, $ionicPopover, $rootScope, $state, $ionicModal, $cordovaCamera, $cordovaImagePicker, $ionicPlatform, $ionicActionSheet, $ionicHistory, $timeout, $cordovaToast, $cordovaGeolocation, $cordovaBarcodeScanner, $ionicViewSwitcher, $ionicLoading,WeiXinService) {
     return {
       platformPrompt: function (msg, stateurl) {
         if ($ionicPlatform.is('android') || $ionicPlatform.is('ios')) {
@@ -350,14 +350,14 @@ angular.module('starter.services', [])
 
     }
   })
-  .service('MainService', function ($q, $http, BooLv) { //主页服务定义
+  .service('MainService', function ($q, $http) { //主页服务定义
     return {
       authLogin: function () {
         var deferred = $q.defer();// 声明延后执行，表示要去监控后面的执行
         var promise = deferred.promise
         promise = $http({
           method: 'POST',
-          url: BooLv.api + "/Auth/Login",
+          url: YiLife.api + "/Auth/Login",
           data: data
         }).success(function (data) {
           deferred.resolve(data);// 声明执行成功，即http请求数据成功，可以返回数据了
@@ -368,14 +368,14 @@ angular.module('starter.services', [])
       }
     }
   })
-  .service('AccountService', function ($q, $http, BooLv, $cordovaFileTransfer, $state, $cordovaToast, $interval, $timeout, $ionicPopup, $ionicLoading, $cordovaFile, $cordovaFileOpener2) {
+  .service('AccountService', function ($q, $http, YiLife, $cordovaFileTransfer, $state, $cordovaToast, $interval, $timeout, $ionicPopup, $ionicLoading, $cordovaFile, $cordovaFileOpener2) {
     return {
       login: function (datas) { //登录
         var deferred = $q.defer();// 声明延后执行，表示要去监控后面的执行
         var promise = deferred.promise
         promise = $http({
           method: 'POST',
-          url: BooLv.api + "/user/login",
+          url: YiLife.api + "/user/login",
           data: datas
         }).success(function (data) {
           deferred.resolve(data);// 声明执行成功，即http请求数据成功，可以返回数据了
@@ -389,7 +389,7 @@ angular.module('starter.services', [])
         //图片上传upImage（图片路径）
         //http://ngcordova.com/docs/plugins/fileTransfer/  资料地址
 
-        var url = BooLv.api + "/UploadImg/Add/" + params.filenames;//Filenames:上传附件根目录文件夹名称发货，签收，验货统一用Receipt这个名称  会员头像用User这个名称
+        var url = YiLife.api + "/UploadImg/Add/" + params.filenames;//Filenames:上传附件根目录文件夹名称发货，签收，验货统一用Receipt这个名称  会员头像用User这个名称
         var options = {
           fileKey: "file",//相当于form表单项的name属性
           fileName: imageUrl.substr(imageUrl.lastIndexOf('/') + 1),
@@ -467,7 +467,7 @@ angular.module('starter.services', [])
       }
     }
   })
-  .service('WeiXinService', function ($q, $http, BooLv) { //微信 JS SDK 接口服务定义
+  .service('WeiXinService', function ($q, $http, YiLife) { //微信 JS SDK 接口服务定义
     return {
       //获取微信签名
       getWCSignature: function (params) {
@@ -475,7 +475,7 @@ angular.module('starter.services', [])
         var promise = deferred.promise
         promise = $http({
           method: 'POST',
-          url: BooLv.api + "/wc/signature",
+          url: YiLife.api + "/wc/signature",
           params: params
         }).success(function (data) {
           deferred.resolve(data);// 声明执行成功，即http请求数据成功，可以返回数据了
@@ -490,7 +490,7 @@ angular.module('starter.services', [])
         var promise = deferred.promise
         promise = $http({
           method: 'GET',
-          url: BooLv.api + "/wc/media",
+          url: YiLife.api + "/wc/media",
           params: params
         }).success(function (data) {
           deferred.resolve(data);// 声明执行成功，即http请求数据成功，可以返回数据了

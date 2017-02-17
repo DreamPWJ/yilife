@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.yilife" version="0.0.1" xmlns="http://www.w3.org/ns/widgets"
-        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.yilife" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>翼生活</name>
   <description>
     社区APP
@@ -8,17 +7,17 @@
   <author email="you@example.com" href="http://example.com/">
     潘维吉
   </author>
-  <content src="http://www.juhuawang.com"/>
+  <content src="index.html"/>
   <access origin="*"/>
   <access origin="*"/>
-  <allow-intent href="http://*/*"/>
-  <allow-intent href="https://*/*"/>
   <access origin="tel:*" launch-external="yes"/>
-  <allow-intent href="tel:*"/>  <!--苹果设备打电话-->
   <access origin="sms:*" launch-external="yes"/>
   <access origin="mailto:*" launch-external="yes"/>
   <access origin="geo:*" launch-external="yes"/>
   <access origin="cdvfile://*"/>
+  <allow-intent href="http://*/*"/>
+  <allow-intent href="https://*/*"/>
+  <allow-intent href="tel:*"/>
   <allow-intent href="cdvfile://*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
@@ -26,11 +25,10 @@
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="10000"/>
+  <preference name="SplashScreenDelay" value="60000"/>
   <preference name="ShowSplashScreenSpinner" value="false"/>
   <preference name="FadeSplashScreen" value="false"/>
-  <preference name="orientation"
-              value="portrait"/> <!--强制竖屏显示 default表示landscape和portrait均可用，landscape(横屏)，portrait(竖屏)-->
+  <preference name="orientation" value="portrait"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>

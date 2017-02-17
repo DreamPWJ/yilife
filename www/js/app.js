@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'starter.config', 'ngCordova'])
 
   .run(function ($ionicPlatform, $rootScope, $location, $ionicHistory, $cordovaToast, $cordovaNetwork, CommonService) {
     $ionicPlatform.ready(function () {
@@ -145,16 +145,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     $stateProvider
 
     // setup an abstract state for the tabs directive
-      .state('tab', {
-        url: '/tab',
-        abstract: true,
-        templateUrl: 'templates/tabs.html'
-      })
+    /*      .state('tab', {
+     url: '/tab',
+     abstract: true,
+     templateUrl: 'templates/tabs.html'
+     })*/
 
       // Each tab has its own nav history stack:
 
       //APP首页面
-      .state('tab.main', {
+/*      .state('tab.main', {
         url: '/main',
         views: {
           'tab-main': {
@@ -162,9 +162,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             controller: 'MainCtrl'
           }
         }
-      })
+      })*/
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/tab/main');
+   // $urlRouterProvider.otherwise('/tab/main');
 
   });

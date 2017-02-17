@@ -8,8 +8,11 @@ angular.module('starter.controllers', [])
 
 
   //APP首页面
-  .controller('MainCtrl', function ($scope, $rootScope, CommonService, $ionicHistory) {
-
+  .controller('MainCtrl', function ($scope, $rootScope, CommonService) {
+    //扫一扫
+    $scope.barcodeScanner = function () {
+      CommonService.barcodeScanner();
+    }
   })
 
 
