@@ -13,6 +13,15 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
@@ -20,6 +29,9 @@
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
         "ionic-plugin-keyboard": {
