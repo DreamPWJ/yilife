@@ -114,5 +114,14 @@
         "variables": {
             "APP_KEY": "123456"
         }
+    },
+    "cordova-plugin-alipay": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/charleyw/cordova-plugin-alipay.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

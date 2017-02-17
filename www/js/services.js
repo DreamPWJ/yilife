@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 //service在使用this指针，而factory直接返回一个对象
-  .service('CommonService', function ($ionicPopup, $ionicPopover, $rootScope, $state, $ionicModal, $cordovaCamera, $cordovaImagePicker, $ionicPlatform, $ionicActionSheet, $ionicHistory, $timeout, $cordovaToast, $cordovaGeolocation, $cordovaBarcodeScanner, $ionicViewSwitcher, $ionicLoading,WeiXinService) {
+  .service('CommonService', function ($ionicPopup, $ionicPopover, $rootScope, $state, $ionicModal, $cordovaCamera, $cordovaImagePicker, $ionicPlatform, $ionicActionSheet, $ionicHistory, $timeout, $cordovaToast, $cordovaGeolocation, $cordovaBarcodeScanner, $ionicViewSwitcher, $ionicLoading, WeiXinService) {
     return {
       platformPrompt: function (msg, stateurl) {
         if ($ionicPlatform.is('android') || $ionicPlatform.is('ios')) {
@@ -190,7 +190,7 @@ angular.module('starter.services', [])
         });
 
       },
-      uploadActionSheet: function ($scope, filename,isSingle) {//上传图片  isSingle是否是单张上传
+      uploadActionSheet: function ($scope, filename, isSingle) {//上传图片  isSingle是否是单张上传
         isSingle = (isSingle == undefined) ? false : isSingle;
         CommonService = this;
         $ionicActionSheet.show({
@@ -207,10 +207,10 @@ angular.module('starter.services', [])
           buttonClicked: function (index) {
             switch (index) {
               case 0:
-                CommonService.takePicture($scope, 0, filename,isSingle)
+                CommonService.takePicture($scope, 0, filename, isSingle)
                 break;
               case 1:
-                CommonService.takePicture($scope, 1, filename,isSingle)
+                CommonService.takePicture($scope, 1, filename, isSingle)
                 break;
               default:
                 break;
@@ -220,7 +220,7 @@ angular.module('starter.services', [])
         });
       },
       //调用摄像头和相册 type 0是图库 1是拍照
-      takePicture: function ($scope, type, filenames,isSingle) {
+      takePicture: function ($scope, type, filenames, isSingle) {
         //统计上传成功数量
         $scope.imageSuccessCount = 0;
         //是否是微信
@@ -251,7 +251,7 @@ angular.module('starter.services', [])
             $cordovaToast.showLongCenter('获取图片失败');
           });
         }
-        if (type == 1|| (type == 0 && isSingle)) {  //拍照
+        if (type == 1 || (type == 0 && isSingle)) {  //拍照
           //$cordovaCamera.cleanup();
           var options = {
             quality: 100,//相片质量0-100
@@ -467,6 +467,7 @@ angular.module('starter.services', [])
       }
     }
   })
+
   .service('WeiXinService', function ($q, $http, YiLife) { //微信 JS SDK 接口服务定义
     return {
       //获取微信签名
@@ -516,7 +517,7 @@ angular.module('starter.services', [])
           timestamp: timestamp, // 必填，生成签名的时间戳
           nonceStr: nonceStr, // 必填，生成签名的随机串
           signature: signature,// 必填，签名，见附录1
-          jsApiList: ['checkJsApi', 'chooseImage', 'uploadImage', 'getLocation', 'openAddress','scanQRCode', 'chooseWXPay', 'onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+          jsApiList: ['checkJsApi', 'chooseImage', 'uploadImage', 'getLocation', 'openAddress', 'scanQRCode', 'chooseWXPay', 'onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareQZone'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
         });
       },
       wxcheckJsApi: function () { //判断当前客户端版本是否支持指定微信 JS SDK接口
