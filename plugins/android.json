@@ -28,6 +28,10 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "123456",
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
@@ -37,15 +41,11 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
-        "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "com.ionicframework.yilife"
-        },
-        "cordova-plugin-wechat": {
-            "WECHATAPPID": "123456",
-            "PACKAGE_NAME": "com.ionicframework.yilife"
-        },
         "jpush-phonegap-plugin": {
             "APP_KEY": "123456",
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         }
     },
