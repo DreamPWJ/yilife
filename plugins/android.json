@@ -39,6 +39,14 @@
         },
         "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "123456",
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "jpush-phonegap-plugin": {
+            "APP_KEY": "123456",
+            "PACKAGE_NAME": "com.ionicframework.yilife"
         }
     },
     "dependent_plugins": {
