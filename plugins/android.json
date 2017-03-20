@@ -28,6 +28,9 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
+        "cordova-plugin-themeablebrowser": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
         "cordova-plugin-wechat": {
             "WECHATAPPID": "123456",
             "PACKAGE_NAME": "com.ionicframework.yilife"
