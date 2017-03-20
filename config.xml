@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.yilife" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.yilife" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>翼生活</name>
   <description>
     社区APP
   </description>
   <author email="you@example.com" href="http://example.com/">
-    潘维吉
+    翼生活
   </author>
-  <content src="index.html"/>
+  <content src="http://118.123.168.19:8888/shouji/indexs"/>
   <access origin="*"/>
   <access origin="*"/>
   <access origin="tel:*" launch-external="yes"/>
@@ -25,7 +25,7 @@
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="60000"/>
+  <preference name="SplashScreenDelay" value="3000"/>
   <preference name="ShowSplashScreenSpinner" value="false"/>
   <preference name="FadeSplashScreen" value="false"/>
   <preference name="orientation" value="portrait"/>
