@@ -105,16 +105,6 @@
             "WECHATAPPID": "123456"
         }
     },
-    "jpush-phonegap-plugin": {
-        "source": {
-            "type": "registry",
-            "id": "jpush-phonegap-plugin"
-        },
-        "is_top_level": true,
-        "variables": {
-            "APP_KEY": "123456"
-        }
-    },
     "cordova-plugin-alipay": {
         "source": {
             "type": "git",
@@ -122,6 +112,24 @@
             "subdir": "."
         },
         "is_top_level": true,
+        "variables": {}
+    },
+    "jpush-phonegap-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "jpush-phonegap-plugin"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_KEY": "7357422548fc190d77919b84"
+        }
+    },
+    "cordova-plugin-jcore": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-jcore"
+        },
+        "is_top_level": false,
         "variables": {}
     }
 }

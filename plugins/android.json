@@ -41,16 +41,19 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
-        "jpush-phonegap-plugin": {
-            "APP_KEY": "123456",
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
-        "phonegap-plugin-barcodescanner": {
+        "jpush-phonegap-plugin": {
+            "APP_KEY": "7357422548fc190d77919b84",
             "PACKAGE_NAME": "com.ionicframework.yilife"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "cordova-plugin-jcore": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         }
     }
