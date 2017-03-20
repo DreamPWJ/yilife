@@ -9,7 +9,6 @@
   </author>
   <content src="http://118.123.168.19:8888/shouji/indexs"/>
   <access origin="*"/>
-  <access origin="*"/>
   <access origin="tel:*" launch-external="yes"/>
   <access origin="sms:*" launch-external="yes"/>
   <access origin="mailto:*" launch-external="yes"/>

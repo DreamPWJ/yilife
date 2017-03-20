@@ -41,11 +41,11 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         },
-        "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "com.ionicframework.yilife"
-        },
         "jpush-phonegap-plugin": {
             "APP_KEY": "7357422548fc190d77919b84",
+            "PACKAGE_NAME": "com.ionicframework.yilife"
+        },
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.ionicframework.yilife"
         }
     },
