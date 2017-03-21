@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.yilife" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.yilife" version="1.0.0" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>翼生活</name>
   <description>
     翼生活社区APP
@@ -14,11 +15,11 @@
   <access origin="mailto:*" launch-external="yes"/>
   <access origin="geo:*" launch-external="yes"/>
   <access origin="cdvfile://*"/>
-<!--  <allow-intent href="http://*/*"/>
-  <allow-intent href="https://*/*"/>-->
-<!--  解决就是app启动后，会跳转到浏览器中打开网页-->
-  <allow-navigation href="http://*/*" />
-  <allow-navigation href="https://*/*" />
+  <!--  <allow-intent href="http://*/*"/>
+    <allow-intent href="https://*/*"/>-->
+  <!--内部app跳转  解决app启动后，会跳转到浏览器中打开网页-->
+  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="https://*/*"/>
   <allow-intent href="tel:*"/>
   <allow-intent href="cdvfile://*"/>
   <preference name="webviewbounce" value="false"/>

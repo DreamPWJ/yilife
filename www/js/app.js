@@ -39,8 +39,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //主页面显示退出提示
       $ionicPlatform.registerBackButtonAction(function (e) {
         e.preventDefault();
+
         // Is there a page to go back to? 制定页面返回退出程序
-        if ($location.path() == '/tab/main') {
+        if ($location.path() == '/shouji/indexs') {
           if ($rootScope.backButtonPressedOnceToExit) {
             ionic.Platform.exitApp();
           } else {
@@ -88,6 +89,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //启动极光推送服务
       try {
         window.plugins.jPushPlugin.init();
+        //极光推送设置
+        window.plugins.jPushPlugin.getRegistrationID(function (data) {
+          localStorage.setItem("jPushRegistrationID", data)
+        })
       } catch (e) {
         console.log(e);
       }
@@ -107,6 +112,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       document.addEventListener("jpush.openNotification", function (data) {
 
       }, false)
+
 
       //调试模式，这样报错会在应用中弹出一个遮罩层显示错误信息
       //window.plugins.jPushPlugin.setDebugMode(true);
@@ -151,20 +157,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
      templateUrl: 'templates/tabs.html'
      })*/
 
-      // Each tab has its own nav history stack:
+    // Each tab has its own nav history stack:
 
-      //APP首页面
-/*      .state('tab.main', {
-        url: '/main',
-        views: {
-          'tab-main': {
-            templateUrl: 'templates/main.html',
-            controller: 'MainCtrl'
-          }
-        }
-      })*/
+    //APP首页面
+    /*      .state('tab.main', {
+     url: '/main',
+     views: {
+     'tab-main': {
+     templateUrl: 'templates/main.html',
+     controller: 'MainCtrl'
+     }
+     }
+     })*/
 
     // if none of the above states are matched, use this as the fallback
-   // $urlRouterProvider.otherwise('/tab/main');
+    // $urlRouterProvider.otherwise('/tab/main');
 
   });
