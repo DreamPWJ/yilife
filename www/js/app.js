@@ -89,10 +89,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       //启动极光推送服务
       try {
         window.plugins.jPushPlugin.init();
-        //极光推送设置
-        window.plugins.jPushPlugin.getRegistrationID(function (data) {
-          localStorage.setItem("jPushRegistrationID", data)
-        })
+
       } catch (e) {
         console.log(e);
       }

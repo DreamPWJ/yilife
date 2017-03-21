@@ -8,33 +8,54 @@ angular.module('starter.controllers', [])
 
 
   //APP首页面
-  .controller('MainCtrl', function ($scope, $rootScope, CommonService,WeiXinService) {
+  .controller('MainCtrl', function ($scope, $rootScope, CommonService, WeiXinService) {
 
+    var getRegistrationID = function () {
+      window.plugins.jPushPlugin.getRegistrationID(onGetRegistrationID);
+    };
+
+    var onGetRegistrationID = function (data) {
+      try {
+        console.log("JPushPlugin:registrationID is " + data);
+
+        if (data.length == 0) {
+          var t1 = window.setTimeout(getRegistrationID, 1000);
+        }
+        localStorage.setItem("jPushRegistrationID", data)
+      } catch (exception) {
+        console.log(exception);
+      }
+    };
+    window.setTimeout(getRegistrationID, 1000);
     //扫一扫
     $scope.barcodeScanner = function () {
       CommonService.barcodeScanner();
     }
     //确认支付
     $scope.affirmPay = function (choice) {
-      if (choice== "A") {//微信支付
-        CommonService.platformPrompt("微信支付","close");
+      if (choice == "A") {//微信支付
+        CommonService.platformPrompt("微信支付", "close");
         WeiXinService.getweixinPayData().success(function (data) {
           WeiXinService.weixinPay(data);
         })
       } else if (choice == "B") {//支付宝支付
-        CommonService.platformPrompt("支付宝支付","close");
+        CommonService.platformPrompt("支付宝支付", "close");
         window.alipay.pay({
           tradeNo: new Date().getTime(),
           subject: "测试标题",
           body: "我是测试内容",
           price: 0.01,
           notifyUrl: "http://your.server.notify.url"
-        }, function(successResults){alert(successResults)}, function(errorResults){alert(errorResults)});
+        }, function (successResults) {
+          alert(successResults)
+        }, function (errorResults) {
+          alert(errorResults)
+        });
       }
 
     }
 
-    $scope.openWeb=function() {
+    $scope.openWeb = function () {
       cordova.ThemeableBrowser.open('http://118.123.168.19:8888/shouji/indexs', '_blank', {
         statusbar: {
           color: '#ffffffff'
