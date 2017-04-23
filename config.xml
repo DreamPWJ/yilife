@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.yilife" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.yilife" version="1.0.0" xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>翼生活</name>
   <description>
     翼生活社区APP
@@ -7,12 +8,14 @@
   <author email="you@example.com" href="http://example.com/">
     翼生活
   </author>
-  <content src="http://118.123.168.19:8888/shouji/indexs"/>
+  <content src="index.html"/>
+  <!--  <content src="http://118.123.168.19:8888/shouji/indexs"/>-->
   <access origin="*"/>
   <access origin="tel:*" launch-external="yes"/>
   <access origin="sms:*" launch-external="yes"/>
   <access origin="mailto:*" launch-external="yes"/>
   <access origin="geo:*" launch-external="yes"/>
+  <access origin="weixin:*" launch-external="yes"/>
   <access origin="cdvfile://*"/>
   <allow-navigation href="http://*/*"/>
   <allow-navigation href="https://*/*"/>
