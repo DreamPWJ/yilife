@@ -16,6 +16,7 @@
   <access origin="mailto:*" launch-external="yes"/>
   <access origin="geo:*" launch-external="yes"/>
   <access origin="weixin:*" launch-external="yes"/>
+  <access origin="videogo:com.videogo" launch-external="yes"/>
   <access origin="cdvfile://*"/>
   <allow-navigation href="http://*/*"/>
   <allow-navigation href="https://*/*"/>

@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
 
 
   //APP首页面
-  .controller('MainCtrl', function ($scope, $rootScope, CommonService, WeiXinService,AccountService) {
+  .controller('MainCtrl', function ($scope, $rootScope, CommonService, WeiXinService, AccountService) {
 
       var getRegistrationID = function () {
         window.plugins.jPushPlugin.getRegistrationID(onGetRegistrationID);
@@ -55,9 +55,9 @@ angular.module('starter.controllers', [])
 
       }
       //打开第三方APP
-      $scope.openDownloadApp = function () {
-        AccountService.openDownloadApp();
-      }
+      /*      $scope.openDownloadApp = function () {
+       AccountService.openDownloadApp();
+       }*/
       //打开第三方url
       $scope.windowOpen = function () {
         CommonService.windowOpen("http://i.ys7.com/assets/deps/shipin7.apk")
