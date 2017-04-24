@@ -368,7 +368,7 @@ angular.module('starter.services', [])
       }
     }
   })
-  .service('AccountService', function ($q, $http, YiLife, $cordovaFileTransfer, $state, $cordovaToast, $interval, $timeout, $ionicPopup, $ionicLoading, $cordovaFile, $cordovaFileOpener2) {
+  .service('AccountService', function ($q, $http, YiLife, $cordovaFileTransfer, $state, $cordovaToast,$ionicPlatform, $interval, $timeout, $ionicPopup, $ionicLoading, $cordovaFile, $cordovaFileOpener2) {
     return {
       login: function (datas) { //登录
         var deferred = $q.defer();// 声明延后执行，表示要去监控后面的执行
@@ -411,48 +411,63 @@ angular.module('starter.services', [])
             // constant progress updates
           });
       },
-      // 下载app
-      downloadApp: function (appurl) {
-        $ionicLoading.show({
-          template: '已经下载：0%'
-        });
-        var url = appurl; //可以从服务端获取更新APP的路径
-        try {
-          var targetPath = cordova.file.externalRootDirectory + '/songguo/songguo.apk'; //APP下载存放的路径，可以使用cordova file插件进行相关配置
-        } catch (e) {
-          $ionicLoading.hide();
-        }
+      // 打开或者下载app
+      openDownloadApp: function () {
+        var APPCommon = {
+          iphoneSchema: 'XingboTV://',
+          iphoneDownUrl: 'https://itunes.apple.com/cn/app/xing-botv-mei-nu-shuai-ge3d/id1098066581?l=en&mt=8',
+          androidSchema: 'scheme://com.videogo/',
+          androidDownUrl: 'http://i.ys7.com/assets/deps/shipin7.apk',
+          openApp: function () {
+            var this_ = this;
+            //微信
+            if (this_.isWeixin()) {
+              $(".weixin-tip").css("height", $(window).height());
+              $(".weixin-tip").show();
+              $('.weixin-tip').on('touchstart', function () {
+                $(".weixin-tip").hide();
+              });
 
-        var trustHosts = true;
-        var options = {};
-        $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
-          // 打开下载下来的APP
-          $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive'
-          ).then(function () {
-            // 成功
-          }, function (err) {
-            // 错误
-          });
-          $ionicLoading.hide();
-        }, function (err) {
-          $cordovaToast.showLongCenter('APP下载失败,' + err);
-          $ionicLoading.hide();
-          return;
-        }, function (progress) {
-          //进度，这里使用文字显示下载百分比
-          $timeout(function () {
-            var downloadProgress = (progress.loaded / progress.total) * 100;
-            $ionicLoading.show({
-              template: '已经下载：' + Math.floor(downloadProgress) + '%'
-            });
-            if (downloadProgress > 99) {
-              $ionicLoading.hide();
+            } else {//非微信浏览器
+              if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i) || $ionicPlatform.is('ios')) {
+                var loadDateTime = new Date();
+                window.setTimeout(function () {
+                  var timeOutDateTime = new Date();
+                  if (timeOutDateTime - loadDateTime < 5000) {
+                    window.location = this_.iphoneDownUrl;//ios下载地址
+                  } else {
+                    window.close();
+                  }
+                }, 25);
+                window.location = this.iphoneSchema;
+              } else if (navigator.userAgent.match(/android/i) || $ionicPlatform.is('android') ) {
+                try {
+                  window.location = this_.androidDownUrl; //android下载地址
+                  window.location = this_.androidSchema;
+                  setTimeout(function () {
+                    window.location = this_.androidDownUrl; //android下载地址
+
+                  }, 500);
+                } catch (e) {
+
+                }
+              }
             }
-          })
-        });
+          },
 
+          isWeixin: function () { //判断是否是微信
+            var ua = navigator.userAgent.toLowerCase();
+            if (ua.match(/MicroMessenger/i) == "micromessenger") {
+              return true;
+            } else {
+              return false;
+            }
+          }
 
+        };
+        APPCommon.openApp();
       }
+
     }
   })
 
