@@ -54,7 +54,10 @@ angular.module('starter.controllers', [])
       }
 
     }
-
+   //打开第三方url
+    $scope.windowOpen = function () {
+      CommonService.windowOpen("http://i.ys7.com/assets/deps/shipin7.apk")
+    }
     $scope.openWeb = function () {
       cordova.ThemeableBrowser.open('http://118.123.168.19:8888/shouji/indexs', '_blank', {
         statusbar: {
