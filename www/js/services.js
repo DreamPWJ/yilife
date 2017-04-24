@@ -157,7 +157,7 @@ angular.module('starter.services', [])
                 //通过默认浏览器打开
                 window.open(barcodeData.text, '_system', 'location=yes');
               } else {
-                $cordovaToast.showShortCenter('扫一扫信息:'+ barcodeData.text);
+                $cordovaToast.showShortCenter('扫一扫信息:' + barcodeData.text);
               }
             }, function (error) {
               $cordovaToast.showShortCenter('扫描失败,请重新扫描');
@@ -411,59 +411,47 @@ angular.module('starter.services', [])
             // constant progress updates
           });
       },
-      showUpdateConfirm: function (updatecontent, appurl, version) {    // 显示是否更新对话框
-        var confirmPopup = $ionicPopup.confirm({
-          cssClass: "show-updateconfirm",
-          title: '<strong>发现新版本' + version + '</strong>',
-          template: updatecontent, //从服务端获取更新的内容
-          cancelText: '稍后再说',
-          okText: '立刻更新',
-          okType: 'button-calm',
-          cancelType: 'button-assertive'
+      // 下载app
+      downloadApp: function (appurl) {
+        $ionicLoading.show({
+          template: '已经下载：0%'
         });
-        confirmPopup.then(function (res) {
-          if (res) {
+        var url = appurl; //可以从服务端获取更新APP的路径
+        try {
+          var targetPath = cordova.file.externalRootDirectory + '/songguo/songguo.apk'; //APP下载存放的路径，可以使用cordova file插件进行相关配置
+        } catch (e) {
+          $ionicLoading.hide();
+        }
+
+        var trustHosts = true;
+        var options = {};
+        $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
+          // 打开下载下来的APP
+          $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive'
+          ).then(function () {
+            // 成功
+          }, function (err) {
+            // 错误
+          });
+          $ionicLoading.hide();
+        }, function (err) {
+          $cordovaToast.showLongCenter('APP下载失败,' + err);
+          $ionicLoading.hide();
+          return;
+        }, function (progress) {
+          //进度，这里使用文字显示下载百分比
+          $timeout(function () {
+            var downloadProgress = (progress.loaded / progress.total) * 100;
             $ionicLoading.show({
-              template: "已经下载：0%"
+              template: '已经下载：' + Math.floor(downloadProgress) + '%'
             });
-            var url = appurl; //可以从服务端获取更新APP的路径
-            try {
-              var targetPath = cordova.file.externalRootDirectory + "/boolv/boolv.apk"; //APP下载存放的路径，可以使用cordova file插件进行相关配置
-            } catch (e) {
+            if (downloadProgress > 99) {
               $ionicLoading.hide();
             }
+          })
+        });
 
-            var trustHosts = true;
-            var options = {};
-            $cordovaFileTransfer.download(url, targetPath, options, trustHosts).then(function (result) {
-              // 打开下载下来的APP
-              $cordovaFileOpener2.open(targetPath, 'application/vnd.android.package-archive'
-              ).then(function () {
-                // 成功
-              }, function (err) {
-                // 错误
-              });
-              $ionicLoading.hide();
-            }, function (err) {
-              $cordovaToast.showLongCenter("APP下载失败," + err);
-              $ionicLoading.hide();
-              return;
-            }, function (progress) {
-              //进度，这里使用文字显示下载百分比
-              $timeout(function () {
-                var downloadProgress = (progress.loaded / progress.total) * 100;
-                $ionicLoading.show({
-                  template: "已经下载：" + Math.floor(downloadProgress) + "%"
-                });
-                if (downloadProgress > 99) {
-                  $ionicLoading.hide();
-                }
-              })
-            });
-          } else {
-            // 取消更新
-          }
-        })
+
       }
     }
   })
