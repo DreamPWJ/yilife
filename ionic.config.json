@@ -1,0 +1,8 @@
+{
+  "name": "yilife",
+  "app_id": "",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic1"
+}
